@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,25 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
-
 <body>
-  <h1 id="pageTitle">Chrissmess</h1>
-  <button>Click Me</button>
+  <h1>Chrismess</h1>
 
-  <h2 id="evans">Chris Evans</h2>
-  <h2 id="pratt">Chris Pratt</h2>
-  <h2 id="hemsworth">Chris Hemsworth</h2>
-
-  <form id='frm1'>
-    Type Something:
-    <br>
-    <input type='text' name='inputText' class='textV' autofocus>
-    <br>
-    <br>
-    <input type='submit' value='Submit'>
+  <form id="flickForm">
+    <input
+      type="text"
+      name="flickName"
+      placeholder="Enter a flick"
+      autofocus
+    >
+    <button type="submit">Add Flick</button>
   </form>
+
+  <ul id="flicks"></ul>
 
   <script src="index.js"></script>
 </body>
-
 </html>
