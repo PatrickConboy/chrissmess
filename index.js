@@ -7,13 +7,17 @@ const createSpanLi = function (flickItem, heroItem) {
 	const flickSpan = document.createElement('SPAN')
 	flickSpan.append(flickItem)
 	changeSpanColor(flickSpan, 'blue')
+	flickSpan.style.fontFamily = 'Comic Sans MS, cursive, sans-serif'
+	flickSpan.style.fontSize = '50px'
 
 	const heroSpan = document.createElement('SPAN')
 	heroSpan.append(heroItem)
 	changeSpanColor(heroSpan, 'red')
+	heroSpan.style.fontFamily = 'Comic Sans MS, cursive, sans-serif'
+	heroSpan.style.fontSize = '50px'
 
 	item.append(flickSpan)
-	item.append(' ')
+	item.append('   ')
 	item.append(heroSpan)
 	list.appendChild(item)
 }
@@ -25,14 +29,12 @@ const changeSpanColor = function (span, color) {
 const updateFlickList = function (ev) {
 	ev.preventDefault()
 	const f = ev.target
-	
+
 	const flickItem = f.flickName.value
 	const heroItem = f.favoriteSuperHero.value
 	createSpanLi(flickItem, heroItem)
 
 	f.reset()
 }
-
-// create element span - put text of item into the span - then append the span to the item
 
 form.addEventListener('submit', updateFlickList)
