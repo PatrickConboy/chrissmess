@@ -25,14 +25,7 @@ const changeSpanColor = function (span, color) {
 const updateFlickList = function (ev) {
 	ev.preventDefault()
 	const f = ev.target
-
-	// const flickSpan = document.getElementByClassName('.flick')
-	// const heroSpan = document.getElementByClassName('.hero')
-	// flickSpan.style.color = 'blue'
-	// heroSpan.style.color = 'red'
-
-
-
+	
 	const flickItem = f.flickName.value
 	const heroItem = f.favoriteSuperHero.value
 	createSpanLi(flickItem, heroItem)
