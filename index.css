@@ -1,4 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Parisienne');
+
+
 body {
     font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+}
 
+header {
+    background-image: url(chris.jpg);
+    background-size: cover;
+    height: 10vw;
+    background-repeat: no-repeat;
+    border: 0.5rem solid white;
+    color: white;
+    font-size: 5vw;
+    
+    
+}
+
+h1 {
+    font-family: Parisienne, cursive;
+    text-align: center;
+    font-size: 10vw;
+    margin: 0;
+    text-shadow: 1px 1px 7px red;
+    text-shadow: 1px 1px 4px green;
+}
+
+h2 {
+    text-align: center;
+    font-size: 5vw;
+    
+}
+
+header img {
+    width: 60%;
+    display: block;
+    margin: -20vw auto 0;
+}
+
+form {
+    padding: 1rem;
+}
+
+form > div {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
 }
