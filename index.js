@@ -6,14 +6,20 @@ const createSpanLi = function (flickItem, heroItem) {
 
 	const flickSpan = document.createElement('SPAN')
 	flickSpan.append(flickItem)
+	changeSpanColor(flickSpan, 'blue')
 
 	const heroSpan = document.createElement('SPAN')
 	heroSpan.append(heroItem)
+	changeSpanColor(heroSpan, 'red')
 
 	item.append(flickSpan)
 	item.append(' ')
 	item.append(heroSpan)
 	list.appendChild(item)
+}
+
+const changeSpanColor = function (span, color) {
+	span.style.color = color
 }
 
 const updateFlickList = function (ev) {
