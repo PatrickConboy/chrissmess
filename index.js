@@ -1,21 +1,39 @@
 const form = document.querySelector('form#flickForm')
 
-const createLi = function(flickItem, heroItem) {
+const createSpanLi = function (flickItem, heroItem) {
 	const list = document.querySelector('#flicks')
 	const item = document.createElement('li')
-	item.textContent = flickItem + ' ' + heroItem
+
+	const flickSpan = document.createElement('SPAN')
+	flickSpan.append(flickItem)
+
+	const heroSpan = document.createElement('SPAN')
+	heroSpan.append(heroItem)
+
+	item.append(flickSpan)
+	item.append(' ')
+	item.append(heroSpan)
 	list.appendChild(item)
 }
 
-const updateFlickList = function(ev) {
-  ev.preventDefault()
-  const f = ev.target
+const updateFlickList = function (ev) {
+	ev.preventDefault()
+	const f = ev.target
 
-  const flickItem = f.flickName.value
-  const heroItem = f.favoriteSuperHero.value
-  createLi(flickItem, heroItem)
+	// const flickSpan = document.getElementByClassName('.flick')
+	// const heroSpan = document.getElementByClassName('.hero')
+	// flickSpan.style.color = 'blue'
+	// heroSpan.style.color = 'red'
 
-  f.reset()
+
+
+	const flickItem = f.flickName.value
+	const heroItem = f.favoriteSuperHero.value
+	createSpanLi(flickItem, heroItem)
+
+	f.reset()
 }
+
+// create element span - put text of item into the span - then append the span to the item
 
 form.addEventListener('submit', updateFlickList)
