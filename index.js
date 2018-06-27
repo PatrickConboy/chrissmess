@@ -10,15 +10,15 @@ const createSpanLi = function (flickItem, heroItem)  {
 	// This block fo code creates a span, puts our flick text into it, and styles it.
 	const flickSpan = document.createElement('SPAN')
 	flickSpan.append(flickItem)
-	changeSpanColor(flickSpan, 'blue')
-	flickSpan.style.fontFamily = 'Comic Sans MS, cursive, sans-serif'
+	changeSpanColor(flickSpan, 'green')
+	flickSpan.style.fontFamily = 'Parisienne, cursive'
 	flickSpan.style.fontSize = '50px'
 
 	// This block of code creates a span, puts our hero text into it, and styles it.
 	const heroSpan = document.createElement('SPAN')
 	heroSpan.append(heroItem)
-	changeSpanColor(heroSpan, 'red')
-	heroSpan.style.fontFamily = 'Comic Sans MS, cursive, sans-serif'
+	changeSpanColor(heroSpan, 'black')
+	heroSpan.style.fontFamily = 'Parisienne, cursive'
 	heroSpan.style.fontSize = '50px'
 
 	// This block of code simply takes our created spans and puts them in our list, with a space between.
