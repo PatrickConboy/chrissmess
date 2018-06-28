@@ -1,18 +1,11 @@
-const flickArray = []
-
 class App {
 	constructor() {
+	  this.flicks = []
 	  const form = document.querySelector('form#flickForm')
 	  form.addEventListener('submit', (ev) => {
 		ev.preventDefault()
 		this.handleSubmit(ev)
 	  })
-	}
-
-	addDeleteButton(item) {
-		const dButton = document.createElement('button')
-		dButton.textContent = 'Delete'
-		item.appendChild(dButton)
 	}
   
 	renderProperty(name, value) {
@@ -36,9 +29,20 @@ class App {
 		item.appendChild(span)
 	  })
 
-	  this.addDeleteButton(item)
+	  // Add a delete button
+	  const deleteButton = document.createElement('button')
+	  deleteButton.textContent = 'delete'
+	  deleteButton.addEventListener('click', this.removeFlick)
+	  item.appendChild(deleteButton)
 	  
 	  return item
+	}
+
+	// Throw in ev because it is handling an event!
+	removeFlick(ev) {
+		const item = ev.target.parentElement
+		const list = item.parentElement
+		list.removeChild(item)
 	}
   
 	handleSubmit(ev) {
@@ -49,8 +53,7 @@ class App {
 		chris: f.chrisName.value,
 	  }
 
-	  // Add our flick to the flickArray
-	  flickArray.push(flick)
+	  this.flicks.push(flick)
   
 	  const item = this.renderItem(flick)
   
