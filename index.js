@@ -1,6 +1,8 @@
 class App {
 	constructor() {
+	  this.list = document.querySelector('#flicks')
 	  this.flicks = []
+  
 	  const form = document.querySelector('form#flickForm')
 	  form.addEventListener('submit', (ev) => {
 		ev.preventDefault()
@@ -21,28 +23,48 @@ class App {
   
 	  // get the list of properties
 	  const properties = Object.keys(flick)
-	  
+  
 	  // loop over each property
 	  properties.forEach((propertyName) => {
 		// build a span
 		const span = this.renderProperty(propertyName, flick[propertyName])
 		item.appendChild(span)
 	  })
-
-	  // Add a delete button
+  
+	  // add a delete button
 	  const deleteButton = document.createElement('button')
 	  deleteButton.textContent = 'delete'
-	  deleteButton.addEventListener('click', this.removeFlick)
+	  deleteButton
+		.addEventListener(
+		  'click',
+		  (_ev) => this.removeFlick(flick, item)
+		)
 	  item.appendChild(deleteButton)
-	  
+
+	  // add a fave button
+	  const favButton = document.createElement('button')
+	  favButton.textContent = 'favorite'
+	  favButton
+		.addEventListener(
+			'click',
+			(_ev) => this.toggleFavorite(flick, item)
+		)
+	  item.appendChild(favButton)
+  
 	  return item
 	}
 
-	// Throw in ev because it is handling an event!
-	removeFlick(ev) {
-		const item = ev.target.parentElement
-		const list = item.parentElement
-		list.removeChild(item)
+	toggleFavorite(flick, item) {
+		flick.favorite = !flick.favorite
+	}
+  
+	removeFlick(flick, item) {
+	  // remove it from the UI
+	  this.list.removeChild(item)
+  
+	  // remove it from the array
+	  const i = this.flicks.indexOf(flick)
+	  this.flicks.splice(i, 1)
 	}
   
 	handleSubmit(ev) {
@@ -51,14 +73,14 @@ class App {
 	  const flick = {
 		name: f.flickName.value,
 		chris: f.chrisName.value,
+		favorite: false,
 	  }
-
+  
 	  this.flicks.push(flick)
   
 	  const item = this.renderItem(flick)
   
-	  const list = document.querySelector('#flicks')
-	  list.appendChild(item)
+	  this.list.appendChild(item)
   
 	  f.reset()
 	  f.flickName.focus()
