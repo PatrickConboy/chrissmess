@@ -1,3 +1,5 @@
+const flickArray = []
+
 class App {
 	constructor() {
 	  const form = document.querySelector('form#flickForm')
@@ -20,14 +22,14 @@ class App {
   
 	  // get the list of properties
 	  const properties = Object.keys(flick)
-  
+	  
 	  // loop over each property
 	  properties.forEach((propertyName) => {
 		// build a span
 		const span = this.renderProperty(propertyName, flick[propertyName])
 		item.appendChild(span)
 	  })
-  
+	  
 	  return item
 	}
   
@@ -38,6 +40,9 @@ class App {
 		name: f.flickName.value,
 		chris: f.chrisName.value,
 	  }
+
+	  // Add our flick to the flickArray
+	  flickArray.push(flick)
   
 	  const item = this.renderItem(flick)
   
