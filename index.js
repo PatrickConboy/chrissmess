@@ -17,6 +17,23 @@ class App {
 	  return span
 	}
 
+	renderProperties(flick) {
+		const div = document.createElement('div')
+		div.classList.add('info')
+
+		// get the list of properties
+		const properties = Object.keys(flick)
+  
+		// loop over each property
+		properties.forEach((propertyName) => {
+		  // build a span
+		  const span = this.renderProperty(propertyName, flick[propertyName])
+		  div.appendChild(span)
+		})
+
+		return div
+	}
+
 	renderActionButtons(flick, item) {
 		const actions = document.createElement('div')
 		actions.classList.add('actions')
@@ -24,7 +41,7 @@ class App {
 		// add a delete button
 		const deleteButton = document.createElement('button')
 		deleteButton.classList.add('remove')
-		deleteButton.textContent = 'delete'
+		deleteButton.innerHTML = '<i class="far fa-trash-alt"></i>'
 		deleteButton
 		  .addEventListener(
 			'click',
@@ -35,7 +52,7 @@ class App {
 		// add a fave button
 		const favButton = document.createElement('button')
 		favButton.classList.add('fav')
-		favButton.textContent = 'favorite'
+		favButton.innerHTML = '<i class="far fa-star" title="toggle favorite"></i>'
 		favButton
 		  .addEventListener(
 			  'click',
@@ -49,16 +66,11 @@ class App {
 	renderItem(flick) {
 	  const item = document.createElement('li')
 	  item.classList.add('flick')
+
+	  const properties = this.renderProperties(flick)
+	  item.appendChild(properties)
   
-	  // get the list of properties
-	  const properties = Object.keys(flick)
-  
-	  // loop over each property
-	  properties.forEach((propertyName) => {
-		// build a span
-		const span = this.renderProperty(propertyName, flick[propertyName])
-		item.appendChild(span)
-	  })
+	  
 	  // add action buttons
 	  const actions = this.renderActionButtons(flick, item)
 	  item.appendChild(actions)
