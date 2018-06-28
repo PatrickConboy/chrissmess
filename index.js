@@ -8,6 +8,12 @@ class App {
 		this.handleSubmit(ev)
 	  })
 	}
+
+	addDeleteButton(item) {
+		const dButton = document.createElement('button')
+		dButton.textContent = 'Delete'
+		item.appendChild(dButton)
+	}
   
 	renderProperty(name, value) {
 	  const span = document.createElement('span')
@@ -29,6 +35,8 @@ class App {
 		const span = this.renderProperty(propertyName, flick[propertyName])
 		item.appendChild(span)
 	  })
+
+	  this.addDeleteButton(item)
 	  
 	  return item
 	}
